@@ -17,6 +17,43 @@ class TodoList extends React.PureComponent {
   }
 }
 
+class TodoForm extends React.PureComponent {
+  state = {};
+
+  handleSubmit (event) {
+    event.preventDefault();
+    this.props.onFormSubmit(this.state.item);
+    this.setState({
+      item: ''
+    });
+
+    return false;
+  }
+
+  onChange (event) {
+    this.setState({
+      item: event.target.value
+    });
+  }
+
+  render () {
+    return (
+      <form className='todo__form'
+        onSubmit={this.handleSubmit}>
+        <input
+          className='todo__form-input'
+          type='text'
+          onChange={this.onChange}
+          value={this.state.item} />
+        <input
+          className='todo__form-add'
+          type='submit'
+          value='Add'/>
+      </form>
+    );
+  }
+}
+
 const TodoBanner = () =>
         <h3 className='todo__banner'>TODO List</h3>;
 
@@ -33,6 +70,12 @@ state = {
     'Перенести фокус на поле ввода новой задачи при старте приложения. И переносить фокус туда же при добавлении каждой новой задачи в список',
   ]};
 
+  updateItems (newItem) {
+    this.setState({
+      items: this.state.items.concat(newItem)
+    });
+  }
+
 
   render() {
     return (
@@ -40,6 +83,7 @@ state = {
         <TodoBanner/>
         <div className="App">
           <TodoList items={this.state.items}/>
+          <TodoForm onFormSubmit={this.updateItems}/>
         </div>
       </div>
     );
