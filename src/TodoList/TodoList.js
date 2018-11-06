@@ -13,7 +13,6 @@ export default class TodoList extends React.Component {
   }
 
   render () {
-
     return (
       <ol className='todo__list'>
         {this.props.items.map(this.createItem)}

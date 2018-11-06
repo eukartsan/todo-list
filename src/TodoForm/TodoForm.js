@@ -9,27 +9,18 @@ export default class TodoForm extends React.Component {
       };
   }
 
-  handleSubmit (event) {
-    event.preventDefault();
-    this.props.onFormSubmit(this.state.item);
-    this.setState({
-      item: ''
-    });
 
-    return false;
-  }
-
-  onChange (event) {
+  onChange(event) {
     this.setState({
       item: event.target.value
     });
   }
 
-  addAccountName = (event) => {
-  const {addAccount} = this.props,
+  addNewItem = (event) => {
+  const {addItems} = this.props,
         {itemName} = this.state;
     event.preventDefault();
-    addAccount(itemName)
+    addItems(itemName)
     this.setState({
         itemName: ''
     })
@@ -45,30 +36,22 @@ export default class TodoForm extends React.Component {
     const {itemName} = this.state
 
     return (
-      <div>
-      <form className='todo__form'
-        onSubmit={this.handleSubmit}>
-        <input
-          className='todo__form-input'
-          type='text'
-          onChange={this.onChange}
-          value={this.state.item} />
-        <input
-          className='todo__form-add'
-          type='submit'
-          value='Add'/>
-      </form>
-      <form onSubmit={this.addAccountName}>
-        <label>
-            <input
+    <div>
+      <form
+        onSubmit={this.addNewItem}
+        className='todo__form'>
+          <input
+            className='todo__form-input'
             name="newAccountName"
             type="text"
             value={itemName}
             onChange={this.handleChange}/>
-        </label>
-        <input type="submit" value="Add"/>
+          <input
+            className='todo__form-add'
+            type="submit"
+            value="Add"/>
       </form>
-      </div>
+    </div>
     );
   }
 }

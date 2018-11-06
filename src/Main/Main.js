@@ -17,23 +17,12 @@ export default class Main extends React.Component {
       'Перенести фокус на поле ввода новой задачи при старте приложения. И переносить фокус туда же при добавлении каждой новой задачи в список',
     ]}}
 
-    addAccount = (itemName) => {
-        this.setState((prevState) => {
-            const addNewItem = {
-                itemName
-            }
-
-            return {
-                items: [...prevState.items, addNewItem]
-            };
-        })
+    addNewItems = (itemName) => {
+      const {items} = this.state
+      this.setState({
+        items: this.state.items.concat(itemName)
+      });
     }
-
-  updateItems (newItem) {
-    this.setState({
-      items: this.state.items.concat(newItem)
-    });
-  }
 
   render() {
     return (
@@ -41,11 +30,10 @@ export default class Main extends React.Component {
         <TodoBanner/>
         <div className="App">
           <TodoList
-          items={this.state.items}
+            items={this.state.items}
           />
           <TodoForm
-          addAccount={this.addAccount}
-          onFormSubmit={this.updateItems}
+            addItems={this.addNewItems}
           />
         </div>
       </div>
