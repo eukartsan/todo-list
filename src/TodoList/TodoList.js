@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const TodoListItem = ({children}) =>
         <li className='todo__item'>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Main.css';
 import TodoList from '../TodoList/TodoList';
 import TodoForm from '../TodoForm/TodoForm';
@@ -19,10 +19,12 @@ export default class Main extends React.Component {
 
     addNewItems = (itemName) => {
       const {items} = this.state
-      this.setState({
-        items: this.state.items.concat(itemName)
-      });
-    }
+
+      if ((itemName) !== '') {
+        this.setState({
+          items: items.concat(itemName)
+        });
+      }}
 
   render() {
     return (
