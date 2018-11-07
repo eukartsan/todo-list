@@ -32,6 +32,10 @@ export default class TodoForm extends React.Component {
     });
   }
 
+  componentDidMount(){
+    this.nameInput.focus();
+  }
+
   render () {
     const {itemName} = this.state
 
@@ -45,11 +49,13 @@ export default class TodoForm extends React.Component {
             name="newAccountName"
             type="text"
             value={itemName}
+            ref={(input) => { this.nameInput = input; }}
             onChange={this.handleChange}/>
           <input
             className='todo__form-add'
             type="submit"
-            value="Add"/>
+            value="Add"
+            />
       </form>
     </div>
     );
