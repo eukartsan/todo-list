@@ -1,7 +1,14 @@
 import React from 'react';
 
+onLabelClick = () => {
+  console.log(`Done: ${children}`)
+}
+
 const TodoListItem = ({children}) =>
-        <li className='todo__item'>
+        <li
+          className='todo__item'
+          onClick={this.onLabelClick}
+        >
           {children}
         </li>;
 
