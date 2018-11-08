@@ -24,6 +24,7 @@ export default class TodoForm extends React.Component {
     this.setState({
         itemName: ''
     })
+    this.componentDidMount()
 }
 
   handleChange = (event) => {

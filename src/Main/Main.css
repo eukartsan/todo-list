@@ -38,6 +38,6 @@
   margin: 20px 0;
 }
 
-.todo__item {
+.todo__item through{
   text-decoration: line-through;
 }
