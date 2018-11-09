@@ -2,63 +2,42 @@ import React from 'react';
 
 export default class TodoForm extends React.Component {
   constructor() {
-      super()
+    super()
 
-      this.state = {
-          itemName: '',
-      };
+    this.state = {
+      itemName: ''
+    };
   }
 
-
   onChange(event) {
-    this.setState({
-      item: event.target.value
-    });
+    this.setState({item: event.target.value});
   }
 
   addNewItem = (event) => {
-  const {addItems} = this.props,
-        {itemName} = this.state;
+    const {addItems} = this.props, {itemName} = this.state;
     event.preventDefault();
     addItems(itemName)
-    this.setState({
-        itemName: ''
-    })
-    this.componentDidMount()
-}
-
-  handleChange = (event) => {
-    this.setState({
-        itemName: event.target.value
-    });
+    this.setState({itemName: ''})
   }
 
-  componentDidMount(){
+  handleChange = (event) => {
+    this.setState({itemName: event.target.value});
+  }
+
+  componentDidMount() {
     this.nameInput.focus();
   }
 
-  render () {
+  render() {
     const {itemName} = this.state
 
-    return (
-    <div>
-      <form
-        onSubmit={this.addNewItem}
-        className='todo__form'>
-          <input
-            className='todo__form-input'
-            name="newAccountName"
-            type="text"
-            value={itemName}
-            ref={(input) => { this.nameInput = input; }}
-            onChange={this.handleChange}/>
-          <input
-            className='todo__form-add'
-            type="submit"
-            value="Add"
-            />
+    return (<div>
+      <form onSubmit={this.addNewItem} className='todo__form'>
+        <input className='todo__form-input' name="newAccountName" type="text" value={itemName} ref={(input) => {
+            this.nameInput = input;
+          }} onChange={this.handleChange}/>
+        <input className='todo__form-add' type="submit" value="Add"/>
       </form>
-    </div>
-    );
+    </div>);
   }
 }
