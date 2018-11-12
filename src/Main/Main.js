@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './Main.css';
 import TodoList from '../TodoList/TodoList';
 import TodoForm from '../TodoForm/TodoForm';
+import {connect} from 'react-redux'
+import { User } from '../components/User'
+import { Page } from '../components/Page'
 
 const TodoBanner = () =>
   <h3 className='todo__banner'>
     TODO List
   </h3>;
 
-export default class Main extends React.Component {
+class Main extends Component {
   constructor() {
     super()
 
@@ -30,6 +33,7 @@ export default class Main extends React.Component {
   }
 
   render() {
+     const { user, page } = this.props
     return (
       <div className='todo'>
       <TodoBanner/>
@@ -39,6 +43,19 @@ export default class Main extends React.Component {
         <TodoForm
           addItems={this.addNewItems}/>
       </div>
+      <div>
+      <User name={user.name} />
+      <Page year={page.year} />
+        </div>
     </div>);
   }
 }
+
+const mapStateToProps = store => {
+  return {
+    user: store.user,
+    page: store.page,
+  }
+}
+
+export default connect(mapStateToProps)(Main)

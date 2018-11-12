@@ -41,8 +41,7 @@ export default class TodoForm extends React.Component {
                        name="newAccountName"
                        type="text"
                        value={itemName}
-                       ref={(input) => {
-                           this.nameInput = input;
+                       ref={(input) => {this.nameInput = input;
                        }}
                        onChange={this.handleChange}/>
                 <input
