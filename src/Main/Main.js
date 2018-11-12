@@ -24,7 +24,7 @@ export default class Main extends React.Component {
   addNewItems = (itemName) => {
     const {items} = this.state
 
-    if ((itemName) !== '') {
+    if ((itemName.trim()) !== '') {
       this.setState({items: items.concat(itemName)});
     }
   }
