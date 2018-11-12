@@ -6,9 +6,7 @@ export class User extends React.Component {
     const { name } = this.props
     return (
       <div>
-        <p>
         <p>Тебя зовут {name}!</p>
-        </p>
       </div>
     )
   }

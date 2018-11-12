@@ -5,6 +5,7 @@ import TodoForm from '../TodoForm/TodoForm';
 import {connect} from 'react-redux'
 import { User } from '../components/User'
 import { Page } from '../components/Page'
+import { setYear } from '../actions/PageActions'
 
 const TodoBanner = () =>
   <h3 className='todo__banner'>
@@ -33,7 +34,7 @@ class Main extends Component {
   }
 
   render() {
-     const { user, page } = this.props
+     const { user, page, setYearAction } = this.props
     return (
       <div className='todo'>
       <TodoBanner/>
@@ -45,7 +46,7 @@ class Main extends Component {
       </div>
       <div>
       <User name={user.name} />
-      <Page year={page.year} />
+      <Page year={page.year} setYear={setYearAction} />
         </div>
     </div>);
   }
@@ -58,4 +59,13 @@ const mapStateToProps = store => {
   }
 }
 
-export default connect(mapStateToProps)(Main)
+const mapDispatchToProps = dispatch => {
+  return {
+    setYearAction: year => dispatch(setYear(year)),
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Main)
