@@ -36,13 +36,14 @@ class Main extends Component {
                     {/*<TodoList
                         items={this.state.items}
                         />*/}
+                        <TodoList items={items.items}/>
                     <TodoForm
                         addItems={this.addNewItems}/>
                 </div>
                 <div>
                     <User name={user.name}/>
                     <Page year={page.year} setYear={setYearAction}/>
-                    <TodoList items={items.items}/>
+
                 </div>
             </div>);
     }

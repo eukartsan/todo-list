@@ -6,9 +6,9 @@ export class TodoList extends React.Component {
     const { items } = this.props
     return (
       <div>
-        <ol>
+        <ul>
           <li>{items}</li>
-        </ol>
+        </ul>
       </div>
     )
   }
