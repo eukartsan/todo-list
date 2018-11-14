@@ -42,8 +42,11 @@ class Main extends Component {
                 </div>
                 <div>
                     <User name={user.name}/>
-                    <Page year={page.year} setYear={setYearAction}/>
-
+                    <Page
+                    year={page.year}
+                    isFetching={page.isFetching}
+                    setYear={setYearAction}
+                    item={page.items}/>
                 </div>
             </div>);
     }

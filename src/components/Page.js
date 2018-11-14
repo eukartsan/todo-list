@@ -8,7 +8,7 @@ export class Page extends React.Component {
   }
 
   render() {
-    const { year } = this.props
+    const { year, items, isFetching } = this.props
     return (
     <div>
       <div>
@@ -18,6 +18,7 @@ export class Page extends React.Component {
       </div>
       <div>
         <p>У тебя {year} год</p>
+        {isFetching ? <p>Добавление новыx элементов</p> : <p> {items.length} </p>}
       </div>
     </div>
     )
@@ -27,4 +28,6 @@ export class Page extends React.Component {
 Page.propTypes = {
   year: PropTypes.number.isRequired,
   setYear: PropTypes.func.isRequired,
+  items: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 }
