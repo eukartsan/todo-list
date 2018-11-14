@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import { pageReducer } from './page'
-import { userReducer } from './user'
-import { itemsReducer } from './items'
+import todos from './todos'
+import visibilityFilter from './visibilityFilter'
 
-export const rootReducer = combineReducers({
-  page: pageReducer,
-  user: userReducer,
-  items: itemsReducer,
+const todoApp = combineReducers({
+  todos,
+  visibilityFilter
 })
+
+export default todoApp
